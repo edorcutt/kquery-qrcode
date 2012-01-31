@@ -117,6 +117,21 @@ a.isDark(e,h)?"#000000":"#ffffff").appendTo(f)}a=c}$KOBJ(a).appendTo(this)})}})(
   }
 
   // ------------------------------------------------------------------------
+  // Error Handling in KRL
+  // http://www.windley.com/archives/2011/05/error_handling_in_krl.shtml
+
+  rule Catch_Errors_Throw_At_ErrorStack {
+    select when system error or user error
+    pre {
+      genus = event:param("genus");
+      species = event:param("species");
+    }
+    es:send_error("(#{genus}:#{species}) " + event:param("msg"))
+      with rule_name = event:param("rule_name")
+       and rid = event:param("rid");
+  }
+
+  // ------------------------------------------------------------------------
   // Beyond here there be dragons :)
   // ------------------------------------------------------------------------
 }
