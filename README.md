@@ -1,4 +1,4 @@
 KRL jQuery QRCode Module
 ========================
 
-Still testing ...
+See the demo and docs [here](http://edorcutt.github.com/kquery-qrcode/)
